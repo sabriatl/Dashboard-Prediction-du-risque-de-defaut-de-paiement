@@ -1,0 +1,16 @@
+# Ignore les checkpoints Jupyter
+**/.ipynb_checkpoints/
+
+# Ignore les fichiers de cache Python
+**/__pycache__/
+**/*.pyc
+
+# Ignore MLflow
+notebooks_projet/mlruns/
+
+# Ignore les fichiers générés
+notebooks_projet/*.pkl
+notebooks_projet/*.html
+
+# VSCode
+.vscode/
