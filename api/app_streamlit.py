@@ -25,7 +25,7 @@ if uploaded_file is not None:
     if st.button("Prédire"):
         try:
             response = requests.post(
-                "http://127.0.0.1:8000/predict",
+                "https://projet7-credit-default-risk.onrender.com/predict",
                 json={"data": data_json, "columns": columns_json}
             )
             if response.status_code == 200:
@@ -36,3 +36,5 @@ if uploaded_file is not None:
                 st.error(f"Erreur API : {response.status_code} - {response.text}")
         except Exception as erreur:
             st.error(f"Erreur lors de l'appel API : {erreur}")
+
+            

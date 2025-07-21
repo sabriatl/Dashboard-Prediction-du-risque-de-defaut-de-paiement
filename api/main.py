@@ -10,7 +10,7 @@ app = FastAPI()
 # Charger le modèle  au démarrage
 with open("models/model.pkl", "rb") as file:
     model = pickle.load(file)
-print("✅ Modèle chargé.")
+print("Modèle chargédans")
 
 
 @app.get("/favicon.ico")
@@ -19,7 +19,7 @@ def favicon():
 
 @app.get("/")
 def read_root():
-    return {"message": "API prête avec modèle déjà en mémoire 🚀"}
+    return {"message": "API prête avec modèle déjà en mémoire"}
 
 # Schéma d'entrée
 class PredictRequest(BaseModel):
