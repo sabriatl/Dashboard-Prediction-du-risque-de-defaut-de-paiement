@@ -25,7 +25,7 @@ if uploaded_file is not None:
     if st.button("Prédire"):
         try:
             response = requests.post(
-                "https://projet7-credit-default-risk.onrender.com/predict",
+                "https://projet7-credit-default-risk.azurewebsites.net/predict",
                 json={"data": data_json, "columns": columns_json}
             )
             if response.status_code == 200:
