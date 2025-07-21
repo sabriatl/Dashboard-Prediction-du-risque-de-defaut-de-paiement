@@ -14,3 +14,7 @@ notebooks_projet/*.html
 
 # VSCode
 .vscode/
+
+# Ignore le dossier input (datasets CSV lourds)
+input/
+
