@@ -4,13 +4,19 @@ import pickle
 from pydantic import BaseModel
 import numpy as np
 import pandas as pd
+import os
 
 app = FastAPI()
 
-# Charger le modèle  au démarrage
-with open("models/model.pkl", "rb") as file:
+# Calcul du chemin absolu du modèle à partir du fichier actuel
+chemin_fichier = os.path.dirname(__file__)  # dossier où se trouve le script
+chemin_modele = os.path.join(chemin_fichier, "models", "model.pkl")
+
+# Chargement du modèle
+with open(chemin_modele, "rb") as file:
     model = pickle.load(file)
-print("Modèle chargédans")
+
+print("Modèle chargé")
 
 
 @app.get("/favicon.ico")
