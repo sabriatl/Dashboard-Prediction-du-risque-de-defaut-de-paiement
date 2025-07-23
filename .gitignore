@@ -14,7 +14,12 @@ notebooks_projet/*.html
 
 # VSCode
 .vscode/
+api/.vscode/
 
 # Ignore le dossier input (datasets CSV lourds)
 input/
+
+# Ignore le cache Pytest
+.pytest_cache/
+
 
