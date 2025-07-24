@@ -2,6 +2,7 @@ from fastapi.testclient import TestClient
 from api.main import app
 import pandas as pd
 import numpy as np
+import os
 
 client = TestClient(app)
 
@@ -14,9 +15,9 @@ def test_read_root():
 
 def test_predict_single_client():
     # Charge le CSV exemple
-    # chemin_fichier = os.path.dirname(__file__)
-    # chemin_csv = os.path.join(chemin_fichier, "sample_clients.csv")
-    data = pd.read_csv("../../data/sample_clients.csv")
+    chemin_fichier = os.path.dirname(__file__)
+    chemin_csv = os.path.join(chemin_fichier, "../../data", "sample_clients.csv")
+    data = pd.read_csv(chemin_csv)
 
     # Choix d'un SK_ID_CURR existant
     id_selectionne = data["SK_ID_CURR"].iloc[0]
