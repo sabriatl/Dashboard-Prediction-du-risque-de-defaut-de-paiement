@@ -7,13 +7,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  lint-format:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - name: Install ruff
+        uses: astral-sh/ruff-action@v3
+        with: 
+          src: "./api"
+      - run: ruff check --fix api/
+      - run: ruff format api/
 
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
@@ -26,6 +33,13 @@ jobs:
         run: |
             export PYTHONPATH=$(pwd)
             pytest --maxfail=1 --disable-warnings -q api/tests_unitaires
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [lint-format, unit-tests]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Zip app files (exclude .git, .github)
         run: zip -r release.zip . -x ".git/*" ".github/*"

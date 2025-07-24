@@ -6,20 +6,22 @@
 **/*.pyc
 
 # Ignore MLflow
-notebooks_projet/mlruns/
+notebooks/mlruns/
 
 # Ignore les fichiers générés
-notebooks_projet/*.pkl
-notebooks_projet/*.html
+notebooks/*.pkl
+notebooks/*.html
 
 # VSCode
 .vscode/
 api/.vscode/
 
 # Ignore le dossier input (datasets CSV lourds)
-input/
+data/input/
 
 # Ignore le cache Pytest
 .pytest_cache/
 
 
+# ruff
+.ruff_cache
