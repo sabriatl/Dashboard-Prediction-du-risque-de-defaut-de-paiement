@@ -16,7 +16,7 @@ def test_predict_single_client():
     # Charge le CSV exemple
     # chemin_fichier = os.path.dirname(__file__)
     # chemin_csv = os.path.join(chemin_fichier, "sample_clients.csv")
-    data = pd.read_csv("../data/sample_clients.csv")
+    data = pd.read_csv("../../data/sample_clients.csv")
 
     # Choix d'un SK_ID_CURR existant
     id_selectionne = data["SK_ID_CURR"].iloc[0]
