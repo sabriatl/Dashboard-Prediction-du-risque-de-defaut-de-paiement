@@ -44,8 +44,8 @@ if uploaded_file is not None:
 
         try:
             response = requests.post(
-                "https://projet7-credit-default-risk.azurewebsites.net/predict",
-                # "http://127.0.0.1:8000/predict",
+                #"https://projet7-credit-default-risk.azurewebsites.net/predict",
+                "http://127.0.0.1:8000/predict",
                 json={"data": data_json, "columns": columns_json},
             )
             if response.status_code == 200:
