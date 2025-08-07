@@ -14,7 +14,7 @@ st.set_page_config(
     page_title="Dashboard Scoring Client - API",
     page_icon="📊",
     layout="wide",  
-    initial_sidebar_state="auto"
+    initial_sidebar_state="collapsed"
 )
 
 chemin_fichier = os.path.dirname(__file__)  # dossier du script actuel
@@ -24,9 +24,19 @@ st.image(chemin_banner, use_container_width=True)
 st.markdown("# <div style='text-align: center;'>Dashboard - Scoring client</div>", unsafe_allow_html=True)
 
 
-# SIDEBAR : Upload CSV 
+# SIDEBAR : Upload CSV
+chemin_data = os.path.abspath(os.path.join(chemin_fichier, "..", "data"))
+liste_fichiers = [
+    "sample_clients_1k.csv",
+    "sample_clients_5k.csv",
+    "sample_clients_10k.csv",
+    "global_clients.csv"
+]
 with st.sidebar:
-    uploaded_file = st.file_uploader("Uploader un fichier CSV avec les clients à prédire", type="csv")
+    fichier_selection = st.selectbox("Choisissez un fichier client :", liste_fichiers)
+
+# Chargement du fichier sélectionné
+uploaded_file = os.path.join(chemin_data, fichier_selection)
 
 if uploaded_file is not None:
     # Création des onglets
@@ -267,8 +277,8 @@ if uploaded_file is not None:
             st.write("Comparaison bivariée :")
 
             # Choix des 2 variables
-            variable_x = st.selectbox("Variable X :", features_disponibles, key="x_bivariee")
-            variable_y = st.selectbox("Variable Y :", features_disponibles, key="y_bivariee")
+            variable_x = st.selectbox("Variable X :", features_disponibles, index=0, key="x_bivariee")
+            variable_y = st.selectbox("Variable Y :", features_disponibles, index=1, key="y_bivariee")
 
             # Création du plot
             fig, ax = plt.subplots(figsize=(6, 6))
