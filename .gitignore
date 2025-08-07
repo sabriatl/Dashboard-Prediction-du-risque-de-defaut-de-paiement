@@ -12,6 +12,8 @@ notebooks_projet/
 # Ignore les fichiers générés
 notebooks/*.pkl
 notebooks/*.html
+notebooks/*.csv
+
 
 # VSCode
 .vscode/
@@ -26,3 +28,4 @@ data/input/
 
 # ruff
 .ruff_cache
+
